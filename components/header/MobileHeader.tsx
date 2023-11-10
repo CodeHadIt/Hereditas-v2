@@ -42,8 +42,9 @@ const MobileHeader = () => {
             <ul className="flex flex-col items-start gap-5 text-lg ">
               <li>
                 <Link
-                  href="#testator"
+                  href="#how"
                   className="custom-hover hover:text-primary"
+                  onClick={() => setMenuToggled(false)}
                 >
                   How It Works
                 </Link>
@@ -52,6 +53,7 @@ const MobileHeader = () => {
                 <Link
                   href="#testator"
                   className="custom-hover hover:text-primary"
+                  onClick={() => setMenuToggled(false)}
                 >
                   As Testator
                 </Link>
@@ -60,6 +62,7 @@ const MobileHeader = () => {
                 <Link
                   href="#beneficiary"
                   className="custom-hover hover:text-primary"
+                  onClick={() => setMenuToggled(false)}
                 >
                   As Beneficiary
                 </Link>
@@ -70,7 +73,9 @@ const MobileHeader = () => {
             asChild
             className="w-full custom-scale custom-hover p-6 text-lg"
           >
-            <Link href="/app/dashboard">Launch App</Link>
+            <Link href="/app/dashboard" onClick={() => setMenuToggled(false)}>
+              Launch App
+            </Link>
           </Button>
         </div>
       )}
