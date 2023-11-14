@@ -15,7 +15,7 @@ const ConnectWalletPage = () => {
       <div className="flex min-h-screen flex-col items-center justify-center gap-5 px-6">
         <RainbowKitBtn label="Connect Wallet" />
         <p className="text-sm text-paragraph">
-          Connect Your create and view gifts.
+          Connect Your wallet to view gifts.
         </p>
       </div>
     </section>
