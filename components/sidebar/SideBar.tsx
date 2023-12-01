@@ -18,7 +18,7 @@ const SideBar = () => {
     query: "(min-width: 1024px)",
   });
   useEffect(() => {
-    if (pathname.includes("recieved") && isBigScreen) {
+    if (pathname.includes("recieved")) {
       setIsOpen((prev) => {
         return {
           ...prev,
@@ -29,8 +29,7 @@ const SideBar = () => {
       setIsOpen({ beneficiary: false, testator: false });
     } else if (
       !pathname.includes("home") &&
-      !pathname.includes("recieved") &&
-      isBigScreen
+      !pathname.includes("recieved")
     ) {
       setIsOpen((prev) => {
         return {
@@ -39,7 +38,7 @@ const SideBar = () => {
         };
       });
     }
-  }, [pathname, isBigScreen]);
+  }, [pathname]);
 
   const handleOpen = (type: string) => {
     if(type === "beneficiary" ) {
@@ -58,128 +57,126 @@ const SideBar = () => {
             });
     }
 
- }   
+ }  
 
   return (
-    <section>
-      <Card className="h-full flex flex-col gap-10 p-4 border">
-        <Link
-          href="/app/dashboard/home"
-          className="flex gap-3 items-center hover:bg-primary-foreground active:bg-primary-foreground rounded-md p-4"
-        >
-          <Home />
-          <div className="">Home</div>
-        </Link>
+    <Card className="h-full flex flex-col gap-10 p-4 border">
+      <Link
+        href="/app/dashboard/home"
+        className="flex gap-3 items-center hover:bg-primary-foreground active:bg-primary-foreground rounded-md p-4"
+      >
+        <Home />
+        <div className="">Home</div>
+      </Link>
 
-        <Collapsible
-          open={isOpen.testator}
-          onOpenChange={() => handleOpen("testator")}
-          className="space-y-2"
-        >
-          <div className="flex gap-3 items-center justify-between hover:bg-primary-foreground active:bg-primary-foreground rounded-md p-4">
-            <div className="flex items-center gap-3">
-              <Users />
-              <div className="">Your Gifts</div>
-            </div>
-            <CollapsibleTrigger asChild className="hover:cursor-pointer">
-              {!isOpen.testator ? <ChevronDown /> : <ChevronUp />}
-            </CollapsibleTrigger>
+      <Collapsible
+        open={isOpen.testator}
+        onOpenChange={() => handleOpen("testator")}
+        className="space-y-2"
+      >
+        <div className="flex gap-3 items-center justify-between hover:bg-primary-foreground active:bg-primary-foreground rounded-md p-4">
+          <div className="flex items-center gap-3">
+            <Users />
+            <div className="">Your Gifts</div>
           </div>
-          <CollapsibleContent className="flex flex-col gap-4 pl-20">
-            <Link
-              href="/app/dashboard/create-gift"
-              className={`${
-                pathname.includes("create-gift") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              Create Gift
-            </Link>
-            <Link
-              href="/app/dashboard/all-gifts"
-              className={`${
-                pathname.includes("all-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              All Gifts
-            </Link>
-            <Link
-              href="/app/dashboard/ether-gifts"
-              className={`${
-                pathname.includes("ether-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              Ether Gifts
-            </Link>
-            <Link
-              href="/app/dashboard/nft-gifts"
-              className={`${
-                pathname.includes("nft-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              NFT Gifts
-            </Link>
-            <Link
-              href="/app/dashboard/token-gifts"
-              className={`${
-                pathname.includes("token-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              Token Gifts
-            </Link>
-          </CollapsibleContent>
-        </Collapsible>
+          <CollapsibleTrigger asChild className="hover:cursor-pointer">
+            {!isOpen.testator ? <ChevronDown /> : <ChevronUp />}
+          </CollapsibleTrigger>
+        </div>
+        <CollapsibleContent className="flex flex-col gap-4 pl-20">
+          <Link
+            href="/app/dashboard/create-gift"
+            className={`${
+              pathname.includes("create-gift") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            Create Gift
+          </Link>
+          <Link
+            href="/app/dashboard/all-gifts"
+            className={`${
+              pathname.includes("all-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            All Gifts
+          </Link>
+          <Link
+            href="/app/dashboard/ether-gifts"
+            className={`${
+              pathname.includes("ether-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            Ether Gifts
+          </Link>
+          <Link
+            href="/app/dashboard/nft-gifts"
+            className={`${
+              pathname.includes("nft-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            NFT Gifts
+          </Link>
+          <Link
+            href="/app/dashboard/token-gifts"
+            className={`${
+              pathname.includes("token-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            Token Gifts
+          </Link>
+        </CollapsibleContent>
+      </Collapsible>
 
-        <Collapsible
-          open={isOpen.beneficiary}
-          onOpenChange={() => handleOpen("beneficiary")}
-          className="space-y-2"
-        >
-          <div className="flex gap-3 items-center justify-between hover:bg-primary-foreground active:bg-primary-foreground rounded-md p-4">
-            <div className="flex items-center gap-3">
-              <Gift />
-              <div className="">Recieved Gifts</div>
-            </div>
-            <CollapsibleTrigger asChild className="hover:cursor-pointer">
-              {!isOpen.beneficiary ? <ChevronDown /> : <ChevronUp />}
-            </CollapsibleTrigger>
+      <Collapsible
+        open={isOpen.beneficiary}
+        onOpenChange={() => handleOpen("beneficiary")}
+        className="space-y-2"
+      >
+        <div className="flex gap-3 items-center justify-between hover:bg-primary-foreground active:bg-primary-foreground rounded-md p-4">
+          <div className="flex items-center gap-3">
+            <Gift />
+            <div className="">Recieved Gifts</div>
           </div>
-          <CollapsibleContent className="flex flex-col gap-4 pl-20">
-            <Link
-              href="/app/dashboard/all-recieved-gifts"
-              className={`${
-                pathname.includes("all-recieved-gifts") && "text-primary"
-              } border-b px-4 py-3 text-sm hover:text-primary`}
-            >
-              All Recieved Gifts
-            </Link>
-            <Link
-              href="/app/dashboard/recieved-ether-gifts"
-              className={`${
-                pathname.includes("recieved-ether-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              Recieved Ethers
-            </Link>
-            <Link
-              href="/app/dashboard/recieved-nft-gifts"
-              className={`${
-                pathname.includes("recieved-nft-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              Recieved Nfts
-            </Link>
-            <Link
-              href="/app/dashboard/recieved-token-gifts"
-              className={`${
-                pathname.includes("recieved-token-gifts") && "text-primary"
-              } border-b px-4 py-3  text-sm hover:text-primary`}
-            >
-              Recieved Tokens
-            </Link>
-          </CollapsibleContent>
-        </Collapsible>
-      </Card>
-    </section>
+          <CollapsibleTrigger asChild className="hover:cursor-pointer">
+            {!isOpen.beneficiary ? <ChevronDown /> : <ChevronUp />}
+          </CollapsibleTrigger>
+        </div>
+        <CollapsibleContent className="flex flex-col gap-4 pl-20">
+          <Link
+            href="/app/dashboard/all-recieved-gifts"
+            className={`${
+              pathname.includes("all-recieved-gifts") && "text-primary"
+            } border-b px-4 py-3 text-sm hover:text-primary`}
+          >
+            All Recieved Gifts
+          </Link>
+          <Link
+            href="/app/dashboard/recieved-ether-gifts"
+            className={`${
+              pathname.includes("recieved-ether-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            Recieved Ethers
+          </Link>
+          <Link
+            href="/app/dashboard/recieved-nft-gifts"
+            className={`${
+              pathname.includes("recieved-nft-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            Recieved Nfts
+          </Link>
+          <Link
+            href="/app/dashboard/recieved-token-gifts"
+            className={`${
+              pathname.includes("recieved-token-gifts") && "text-primary"
+            } border-b px-4 py-3  text-sm hover:text-primary`}
+          >
+            Recieved Tokens
+          </Link>
+        </CollapsibleContent>
+      </Collapsible>
+    </Card>
   );
 }
 

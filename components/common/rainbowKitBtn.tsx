@@ -3,7 +3,7 @@ import React from 'react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image';
 
-const RainbowKitBtn: any = ({label}: {label?: string}) => {
+const RainbowKitBtn: any = ({label, truncate}: {label?: string, truncate?: boolean}) => {
   return (
     <ConnectButton.Custom>
       {({
@@ -57,6 +57,21 @@ const RainbowKitBtn: any = ({label}: {label?: string}) => {
                     type="button"
                   >
                     Wrong network
+                  </button>
+                );
+              }
+
+              if(truncate) {
+                return (
+                  <button
+                    onClick={openAccountModal}
+                    type="button"
+                    className="bg-primary h-10 px-4 py-2 custom-scale custom-hover text-primary-foreground rounded-md text-sm font-medium"
+                  >
+                    {account.displayName}
+                    {account.displayBalance
+                      ? ` (${account.displayBalance})`
+                      : ""}
                   </button>
                 );
               }

@@ -16,45 +16,33 @@ const DesktopHeader = () => {
         <Gift size={40} />
         <div className="text-2xl">Hereditas</div>
       </Link>
-      {!address && (
-        <nav aria-label="desktop">
-          <ul className="flex items-center gap-5 text-sm ">
-            <li>
-              <Link
-                href="#testator"
-                className="custom-hover hover:text-primary"
-              >
-                How It Works
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#testator"
-                className="custom-hover hover:text-primary"
-              >
-                As Testator
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#beneficiary"
-                className="custom-hover hover:text-primary"
-              >
-                As Beneficiary
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )}
+      <nav aria-label="desktop">
+        <ul className="flex items-center gap-5 text-sm ">
+          <li>
+            <Link href="#testator" className="custom-hover hover:text-primary">
+              How It Works
+            </Link>
+          </li>
+          <li>
+            <Link href="#testator" className="custom-hover hover:text-primary">
+              As Testator
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#beneficiary"
+              className="custom-hover hover:text-primary"
+            >
+              As Beneficiary
+            </Link>
+          </li>
+        </ul>
+      </nav>
       <div className="flex items-center gap-3">
         <ThemeSwitch />
-        {isConnected ? (
-          <RainbowKitBtn />
-        ) : (
-          <Button asChild className="custom-scale custom-hover">
-            <Link href="/app/dashboard">Launch App</Link>
-          </Button>
-        )}
+        <Button asChild className="custom-scale custom-hover">
+          <Link href="/app/dashboard">Launch App</Link>
+        </Button>
       </div>
     </div>
   );

@@ -1,12 +1,9 @@
+import ThemeProviders from '@/components/providers/ThemeProvider'
+import WalletProviders from '@/components/providers/WalletProviders'
+import { Toaster } from '@/components/ui/toaster'
 import type { Metadata } from 'next'
 import localFont from "next/font/local"
 import './globals.css'
-import ThemeProviders from '@/components/providers/ThemeProvider'
-import WalletProviders from '@/components/providers/WalletProviders'
-import Header from '@/components/header/Header'
-import Footer from '@/components/footer/Footer'
-import BlobBg from '@/components/BlobBg'
-import { Toaster } from '@/components/ui/toaster'
 
 const monolisa = localFont({src: "../fonts/Monolisa.ttf"})
 
@@ -28,12 +25,7 @@ export default function RootLayout({
       <body className={monolisa.className}>
         <ThemeProviders>
           <WalletProviders>
-            <Header />
-            <main className="min-h-screen overflow-hidden relative">
-              <BlobBg />
-              {children}
-            </main>
-            <Footer />
+            {children}
             <Toaster />
           </WalletProviders>
         </ThemeProviders>
