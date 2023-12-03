@@ -1,22 +1,18 @@
 'use client'
 import {
-    Collapsible,
-    CollapsibleContent,
-    CollapsibleTrigger,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronUp, Gift, Home, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useMediaQuery } from "react-responsive";
 import { Card } from '../ui/card';
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState({beneficiary: false, testator: false});
   const pathname = usePathname();
-  const isBigScreen = useMediaQuery({
-    query: "(min-width: 1024px)",
-  });
   useEffect(() => {
     if (pathname.includes("recieved")) {
       setIsOpen((prev) => {

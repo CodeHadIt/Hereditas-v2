@@ -1,15 +1,10 @@
 'use client'
-import React from 'react'
 import { Gift } from "lucide-react";
-import { Button } from '../ui/button';
 import Link from 'next/link';
+import { Button } from '../ui/button';
 import ThemeSwitch from './ThemeSwitch';
-import RainbowKitBtn from '../common/rainbowKitBtn';
-import { useAccount } from 'wagmi';
 
 const DesktopHeader = () => {
-  const {isConnected, address, connector} = useAccount();
-  // console.log({ isConnected, address, connector });
   return (
     <div className="hidden max-w-7xl mx-auto lg:flex justify-between items-center p-6">
       <Link href="/" className="flex items-center gap-2">

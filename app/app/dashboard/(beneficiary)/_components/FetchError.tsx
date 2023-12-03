@@ -9,7 +9,7 @@ const FetchError = ({gift}: { gift? : string}) => {
           An Error occured fetching {gift} gift data.{" "}
         </p>
         <span className="text-muted-foreground text-sm">
-          This is typically because the address is wrong
+          {`This is typically because the address is incorrect or because you're on the wrong chain`}
         </span>
       </div>
       <Button onClick={() => window.location.reload()}>Try Again</Button>

@@ -17,7 +17,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="max-w-7xl mx-auto border-4">
+    <section className="max-w-7xl mx-auto">
       <GiftContextProvider>
         <BeneficiaryContextProvider>
           <DashboardHeader />

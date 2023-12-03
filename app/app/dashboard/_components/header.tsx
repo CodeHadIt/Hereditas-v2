@@ -1,13 +1,12 @@
 "use client";
 import RainbowKitBtn from "@/components/common/rainbowKitBtn";
 import ThemeSwitch from "@/components/header/ThemeSwitch";
-import { Button } from "@/components/ui/button";
+import SideBar from "@/components/sidebar/SideBar";
 import { Gift, Menu, X } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useAccount } from "wagmi";
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import SideBar from "@/components/sidebar/SideBar";
+import { useAccount } from "wagmi";
 
 const DashboardHeader = () => {
   const { isConnected, address, connector } = useAccount();
@@ -15,6 +14,7 @@ const DashboardHeader = () => {
   const isBigScreen = useMediaQuery({
     query: "(min-width: 1024px)",
   });
+
   return (
     <>
       <header className="sticky top-0 bg-background">
@@ -54,10 +54,10 @@ const DashboardHeader = () => {
       {menuToggled && (
         <div className="absolute top-0 w-full z-[1000] animate-menu-fade-in bg-transparent h-screen">
           <div
-            className="w-full h-full bg-transparent"
+            className="w-full h-full dark:bg-[rgba(255,255,255,0.1)] bg-[rgba(229,231,235,0.5)]"
             onClick={() => setMenuToggled(false)}
           ></div>
-          <div className="absolute top-0 animate-menu-fade-in  flex flex-col gap-10  bg-background w-4/5  h-full py-3">
+          <div className="absolute top-0 animate-menu-fade-in  flex flex-col gap-10  bg-background w-4/5  h-full py-3 border-r-2">
             <Link
               href="/"
               className="flex items-center gap-2 p-3 pb-4 border-b w-full"
